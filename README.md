@@ -114,7 +114,7 @@ FROM [RetailDB].[dbo].[Staging_Train_Clean];
 ```
 <img width="282" height="160" alt="image" src="https://github.com/user-attachments/assets/a3442be9-8efc-4ff1-b443-40979e1dd897" />
 
-Ingresos históricos totales y venta promedio por transacción
+#### Ingresos históricos totales y venta promedio por transacción
 La compañía acumuló ingresos históricos totales por **18,591,125.41** unidades monetarias, estableciendo una venta promedio de **2,181.29** por cada transacción o registro analizado en la cadena.
 La gerencia podría utilizar estos indicadores base como línea de referencia para medir con precisión el crecimiento financiero de futuras campañas comerciales y evaluar el ticket promedio de salida de los productos.
 
