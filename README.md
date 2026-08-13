@@ -21,9 +21,12 @@ En este análisis, desarrollo consultas orientadas a responder las siguientes pr
 5. ¿Cuáles son los artículos líderes dentro de cada categoría comercial?
 6. ¿Cómo influyen las características nutricionales de los productos en el volumen de ventas y en el ticket promedio?
 7. ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su rendimiento comercial?
-8. ¿Cómo se comportan las ventas y el factor de retorno al agrupar los productos según su rango de precio (MRP)?
-9. ¿Cuáles son los códigos específicos de producto que arrastran el rendimiento a la baja dentro de una categoría crítica?
-10. ¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
+8. ¿Cómo influye el nivel de visibilidad de los productos en el anaquel sobre la cantidad de artículos y su venta promedio?
+9. ¿Cómo se comportan el volumen de productos, el precio promedio y el factor de retorno de ventas al segmentar el catálogo según los rangos de precios (MRP)?
+10. ¿Cómo varía la variedad de productos, el precio MRP promedio y el factor de retorno comercial al analizar el rendimiento específico de cada categoría?
+11. ¿Cuáles son los productos específicos de menor rendimiento o baja rotación ("zombies") dentro de la categoría comercial con menor tracción?
+12. ¿Cuál es el nivel de estabilidad y riesgo comercial medido a través de la desviación estándar y el índice de volatilidad en las ventas de cada categoría de producto?
+13. ¿Cómo impacta la ubicación del producto en el anaquel (bajo diferentes niveles de visibilidad) en el precio MRP promedio, la venta promedio generada y el factor de retorno de visibilidad?
 
 ## Entender el Terreno (Exploración, Auditoría y Limpieza)
 
