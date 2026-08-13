@@ -15,15 +15,15 @@ Los datos originales extraídos del repositorio público de [Big Mart Sales en K
 En este análisis, desarrollo consultas orientadas a responder las siguientes preguntas clave de negocio:
 
 1. ¿Cuáles son los ingresos históricos totales de la compañía y cuál es la venta promedio generada por transacción?
-* ¿Cómo se pueden clasificar las tiendas objetivamente en cuatro niveles de rendimiento financiero según sus ingresos?
-* ¿Cuáles son exactamente los 10 mejores productos del negocio y cuáles son los 10 con peor desempeño comercial?
-* ¿Qué porcentaje de los ingresos totales de la empresa aporta cada categoría de producto?
-* ¿Cuáles son los artículos líderes dentro de cada categoría comercial?
-* ¿Cómo influyen las características nutricionales de los productos en el volumen de ventas y en el ticket promedio?
-* ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su rendimiento comercial?
-* ¿Cómo se comportan las ventas y el factor de retorno al agrupar los productos según su rango de precio (MRP)?
-* ¿Cuáles son los códigos específicos de producto que arrastran el rendimiento a la baja dentro de una categoría crítica?
-* ¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
+2. ¿Cómo se pueden clasificar las tiendas objetivamente en cuatro niveles de rendimiento financiero según sus ingresos?
+3. ¿Cuáles son exactamente los 10 mejores productos del negocio y cuáles son los 10 con peor desempeño comercial?
+4. ¿Qué porcentaje de los ingresos totales de la empresa aporta cada categoría de producto?
+5. ¿Cuáles son los artículos líderes dentro de cada categoría comercial?
+6. ¿Cómo influyen las características nutricionales de los productos en el volumen de ventas y en el ticket promedio?
+7. ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su rendimiento comercial?
+8. ¿Cómo se comportan las ventas y el factor de retorno al agrupar los productos según su rango de precio (MRP)?
+9. ¿Cuáles son los códigos específicos de producto que arrastran el rendimiento a la baja dentro de una categoría crítica?
+10.¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
 
 ## Entender el Terreno (Exploración, Auditoría y Limpieza)
 
@@ -101,5 +101,21 @@ FROM [RetailDB].[dbo].[Staging_Train_Raw];
 <img width="1116" height="468" alt="image" src="https://github.com/user-attachments/assets/d5f5063b-6fe9-48b0-a3c1-e299ebea6472" />
 
 ## Análisis Exploratorio de Datos (EDA) e Insights
+
+### Pregunta #1: ¿Cuáles son los ingresos históricos totales de la compañía y cuál es la venta promedio generada por transacción?
+
+Encontré el volumen total de ingresos y la venta promedio utilizando las funciones de agregación `SUM` y `AVG`.
+```sql
+SELECT SUM([OutletSales]) AS ingreso_historico
+FROM [RetailDB].[dbo].[Staging_Train_Clean];
+
+SELECT AVG([OutletSales]) AS venta_promedio_transaccion
+FROM [RetailDB].[dbo].[Staging_Train_Clean];
+```
+<img width="282" height="160" alt="image" src="https://github.com/user-attachments/assets/a3442be9-8efc-4ff1-b443-40979e1dd897" />
+
+Ingresos históricos totales y venta promedio por transacción
+La compañía acumuló ingresos históricos totales por **18,591,125.41** unidades monetarias, estableciendo una venta promedio de **2,181.29** por cada transacción o registro analizado en la cadena.
+La gerencia podría utilizar estos indicadores base como línea de referencia para medir con precisión el crecimiento financiero de futuras campañas comerciales y evaluar el ticket promedio de salida de los productos.
 
 
