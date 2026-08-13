@@ -63,15 +63,43 @@ FROM [RetailDB].[dbo].[Staging_Train_Raw];
 ### 3. Detección de Inconsistencias de Texto
 Analicé los valores categóricos de la columna de contenido de grasa (`FatContent`), detectando variaciones de escritura que significaban lo mismo (como `'LF'` / `'Low Fat'` y `'reg'` / `'Regular'`).
 
-*(Aquí pega tu código de agrupación de FatContent)*
-*(Aquí pega tu captura de pantalla de SSMS)*
+```sql
+SELECT 
+    FatContent, 
+    COUNT(FatContent) AS cantidad
+FROM [RetailDB].[dbo].[Staging_Train_Raw]
+GROUP BY FatContent;
+```
+<img width="231" height="143" alt="image" src="https://github.com/user-attachments/assets/fb5abb32-ad81-4308-a059-d8f3943d09ef" />
 
 ### 4. Plan de Limpieza y Tabla Homologada
 Finalmente, para corregir las anomalías encontradas, diseñé un script que unifica los textos irregulares, reemplaza los valores nulos por defecto con funciones lógicas (`ISNULL`, `CASE`) y genera una tabla limpia oficial llamada `Staging_Train_Clean`.
 
-*(Aquí pega tu código de la creación de la tabla limpia)*
-*(Aquí pega tu captura de pantalla de SSMS)*
+```sql
+IF OBJECT_ID('[RetailDB].[dbo].[Staging_Train_Clean]', 'U') IS NOT NULL
+DROP TABLE [RetailDB].[dbo].[Staging_Train_Clean];
 
+SELECT 
+     [ProductID]           
+    ,ISNULL([Weight],0) AS [Weight]            
+    ,CASE 
+        WHEN [FatContent] IN ('Low Fat', 'LF') THEN 'Low Fat'
+        WHEN [FatContent] IN ('Regular', 'reg') THEN 'Regular'
+        ELSE [FatContent]
+     END AS [FatContent]
+    ,[ProductVisibility]  
+    ,[ProductType]         
+    ,[MRP]                 
+    ,[OutletID]            
+    ,[EstablishmentYear]   
+    ,ISNULL([OutletSize],'Desconocido') AS [OutletSize]          
+    ,[LocationType]        
+    ,[OutletType]          
+    ,[OutletSales]    
+INTO [RetailDB].[dbo].[Staging_Train_Clean]
+FROM [RetailDB].[dbo].[Staging_Train_Raw];
+```
+<img width="1116" height="468" alt="image" src="https://github.com/user-attachments/assets/d5f5063b-6fe9-48b0-a3c1-e299ebea6472" />
 
 
 
