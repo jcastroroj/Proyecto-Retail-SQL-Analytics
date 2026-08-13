@@ -14,19 +14,18 @@ Los datos originales extraídos del repositorio público de [Big Mart Sales en K
 
 En este análisis, desarrollo consultas orientadas a responder las siguientes preguntas clave de negocio:
 
-* **Auditoría y Limpieza (Pilar 1):** ¿Cuál es el estado inicial de los registros y cómo se homologan las inconsistencias de texto y nulos en el contenido de grasa (`FatContent`)?
-* **Rendimiento Global (Pilar 2):** ¿Cuáles son los ingresos históricos globales y cómo se comportan las ventas según el tipo de ubicación y el año de establecimiento de las sucursales?
-* **Segmentación de Sucursales (Pilar 2):** ¿Cómo se pueden clasificar las tiendas en cuartiles de rendimiento financiero utilizando funciones de distribución (`NTILE`)?
-* **Productos Estrella y Descartables (Pilar 3):** ¿Cuáles son los 10 mejores productos (Top) y los 10 con peor salida (Bottom) utilizando funciones de ranking (`DENSE_RANK`)?
-* **Participación por Categoría (Pilar 3):** ¿Cuál es el porcentaje de aporte de cada tipo de producto frente al gran total de la empresa utilizando funciones de ventana vacías (`SUM() OVER()`)?
-* **Top por Categoría (Pilar 3):** ¿Cuáles son los 3 principales productos de cada categoría aplicando particionamiento por tipo de producto (`ROW_NUMBER`)?
-* **Eficiencia por Formato de Tienda (Pilar 4):** ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su venta promedio por producto?
-* **Impacto de la Visibilidad (Pilar 4):** ¿Existe una anomalía de ventas en los productos según su nivel de exposición o visibilidad en los anaqueles?
-* **Factor de Rotación y Precio (Pilar 5):** ¿Cómo se comportan las ventas y la velocidad de rotación esperada al segmentar los productos según su precio de etiqueta (`MRP`)?
-* **Ley de Pareto (Pilar 5):** ¿Qué porcentaje de las ventas totales concentra cada categoría de producto dentro del negocio?
-* **Estabilidad y Riesgo Comercial (Pilar 5):** ¿Cuál es el nivel de volatilidad y dispersión de las ventas (desviación estándar) dentro de cada categoría para detectar riesgos operativos?
+1. ¿Cuáles son los ingresos históricos totales de la compañía y cuál es la venta promedio generada por transacción?
+* ¿Cómo se pueden clasificar las tiendas objetivamente en cuatro niveles de rendimiento financiero según sus ingresos?
+* ¿Cuáles son exactamente los 10 mejores productos del negocio y cuáles son los 10 con peor desempeño comercial?
+* ¿Qué porcentaje de los ingresos totales de la empresa aporta cada categoría de producto?
+* ¿Cuáles son los artículos líderes dentro de cada categoría comercial?
+* ¿Cómo influyen las características nutricionales de los productos en el volumen de ventas y en el ticket promedio?
+* ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su rendimiento comercial?
+* ¿Cómo se comportan las ventas y el factor de retorno al agrupar los productos según su rango de precio (MRP)?
+* ¿Cuáles son los códigos específicos de producto que arrastran el rendimiento a la baja dentro de una categoría crítica?
+* ¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
 
-## Pilar 1: Entender el Terreno (Exploración, Auditoría y Limpieza)
+## Entender el Terreno (Exploración, Auditoría y Limpieza)
 
 El objetivo principal de esta primera fase fue conocer la salud general de los datos, detectar valores nulos y homologar las variables categóricas irregulares antes de avanzar con el análisis de negocio.
 
@@ -101,5 +100,6 @@ FROM [RetailDB].[dbo].[Staging_Train_Raw];
 ```
 <img width="1116" height="468" alt="image" src="https://github.com/user-attachments/assets/d5f5063b-6fe9-48b0-a3c1-e299ebea6472" />
 
+## Análisis Exploratorio de Datos (EDA) e Insights
 
 
