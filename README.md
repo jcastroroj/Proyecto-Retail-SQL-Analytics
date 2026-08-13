@@ -38,12 +38,27 @@ EXEC sp_help 'Staging_Train_Raw';
 ```
 <img width="925" height="523" alt="image" src="https://github.com/user-attachments/assets/9f9a5ea5-12aa-4a96-8ccb-a250dc3bf428" />
 
-
 ### 2. Perfilamiento y Detección de Nulos
 Verifiqué la existencia de valores faltantes en los campos críticos del dataset utilizando condicionales de conteo para asegurar la integridad de la información.
 
-*(Aquí pega tu código del perfilamiento de nulos)*
-*(Aquí pega tu captura de pantalla de SSMS)*
+```sql
+SELECT 
+    SUM(CASE WHEN [ProductID] IS NULL THEN 1 ELSE 0 END) AS nulos_id_producto,
+    SUM(CASE WHEN [Weight] IS NULL THEN 1 ELSE 0 END) AS nulos_peso,
+    SUM(CASE WHEN [FatContent] IS NULL THEN 1 ELSE 0 END) AS nulos_contenido_grasa,
+    SUM(CASE WHEN [ProductVisibility] IS NULL THEN 1 ELSE 0 END) AS nulos_visibilidad_producto,
+    SUM(CASE WHEN [ProductType] IS NULL THEN 1 ELSE 0 END) AS nulos_tipo_producto,
+    SUM(CASE WHEN [MRP] IS NULL THEN 1 ELSE 0 END) AS nulos_precio_mrp,
+    SUM(CASE WHEN [OutletID] IS NULL THEN 1 ELSE 0 END) AS nulos_id_tienda,
+    SUM(CASE WHEN [EstablishmentYear] IS NULL THEN 1 ELSE 0 END) AS nulos_anio_establecimiento,
+    SUM(CASE WHEN [OutletSize] IS NULL THEN 1 ELSE 0 END) AS nulos_tamano_tienda,
+    SUM(CASE WHEN [LocationType] IS NULL THEN 1 ELSE 0 END) AS nulos_tipo_ubicacion,
+    SUM(CASE WHEN [OutletType] IS NULL THEN 1 ELSE 0 END) AS nulos_tipo_tienda,
+    SUM(CASE WHEN [OutletSales] IS NULL THEN 1 ELSE 0 END) AS nulos_ventas_tienda
+FROM [RetailDB].[dbo].[Staging_Train_Raw];
+```
+<img width="1587" height="138" alt="image" src="https://github.com/user-attachments/assets/f3d54644-54b9-4fc5-a518-3d9850e35970" />
+
 
 ### 3. Detección de Inconsistencias de Texto
 Analicé los valores categóricos de la columna de contenido de grasa (`FatContent`), detectando variaciones de escritura que significaban lo mismo (como `'LF'` / `'Low Fat'` y `'reg'` / `'Regular'`).
