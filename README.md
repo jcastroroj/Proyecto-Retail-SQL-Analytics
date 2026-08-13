@@ -184,6 +184,9 @@ El análisis de extremos dejó al descubierto una brecha comercial masiva en el 
 La empresa debe implementar urgentemente una política de abastecimiento prioritario y protección de stock para los códigos estrella del Top 10, mientras que los ítems del Bottom 10 requieren una evaluación inmediata para su liquidación o baja definitiva del inventario, evitando así el costo de almacenamiento de productos sin rotación.    
 
 ### Pregunta #4: ¿Qué porcentaje de los ingresos totales de la empresa aporta cada categoría de producto?
+
+Agrupé las ventas por categoría utilizando una expresión de tabla común y calculé la proporción exacta frente al ingreso global aplicando una función de ventana vacía (`SUM OVER`).
+
 ```sql
 WITH VentasPorCategoria AS (
     SELECT 
@@ -202,7 +205,7 @@ ORDER BY porcentaje_participacion DESC;
 ```
 <img width="586" height="378" alt="image" src="https://github.com/user-attachments/assets/a3a2b82c-89c3-4104-a93f-7f59d84e7af8" />
 
-Agrupé las ventas por categoría utilizando una expresión de tabla común y calculé la proporción exacta frente al ingreso global aplicando una función de ventana vacía (`SUM OVER`).
+
 
 #### Participación y Ley de Pareto
 El análisis de concentración demuestra que las ventas de la compañía se apoyan fuertemente en las dos primeras categorías: **Fruits and Vegetables** lidera con un ingreso de **2,820,059.82** (15.17% de participación), seguida muy de cerca por **Snack Foods** con **2,732,786.09** (14.70%). Juntas, estas dos líneas concentran casi el 30% de toda la facturación histórica. En el otro extremo, categorías como **Breakfast** (1.25%) y **Seafood** (0.80%) registran la menor incidencia en el modelo de negocio.
