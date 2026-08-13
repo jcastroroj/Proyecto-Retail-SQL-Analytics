@@ -35,7 +35,8 @@ Ejecuté una auditoría estructural para validar los tipos de datos asignados a 
 
 
 ```sql
-EXEC sp_help 'Staging_Train_Raw'; 
+EXEC sp_help 'Staging_Train_Raw';
+```
 
 *(Aquí pega tu captura de pantalla de SSMS)*
 
