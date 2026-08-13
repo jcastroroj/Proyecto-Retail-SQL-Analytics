@@ -23,7 +23,7 @@ En este análisis, desarrollo consultas orientadas a responder las siguientes pr
 7. ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su rendimiento comercial?
 8. ¿Cómo se comportan las ventas y el factor de retorno al agrupar los productos según su rango de precio (MRP)?
 9. ¿Cuáles son los códigos específicos de producto que arrastran el rendimiento a la baja dentro de una categoría crítica?
-10.¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
+10. ¿Cuál es el nivel de volatilidad y dispersión de las ventas que permite detectar riesgos operativos por categoría?
 
 ## Entender el Terreno (Exploración, Auditoría y Limpieza)
 
