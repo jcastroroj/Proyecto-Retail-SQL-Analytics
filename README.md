@@ -34,7 +34,7 @@ El objetivo principal de esta primera fase fue conocer la salud general de los d
 Ejecuté una auditoría estructural para validar los tipos de datos asignados a cada columna de la tabla.
 
 
-EXEC sp_help 'Staging_Train_Raw';
+**`EXEC sp_help 'Staging_Train_Raw';`**
 
 *(Aquí pega tu captura de pantalla de SSMS)*
 
