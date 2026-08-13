@@ -278,7 +278,7 @@ FROM [RetailDB].[dbo].[Staging_Train_Clean]
 GROUP BY [OutletType]
 ORDER BY venta_promedio_por_producto DESC;
 ```
-<img width="657" height="259" alt="image" src="https://github.com/user-attachments/assets/1329b6b9-864c-47f4-89c3-a47427fb5fcd" />
+<img width="692" height="148" alt="image" src="https://github.com/user-attachments/assets/70b3124f-d9ce-4f8c-8c4c-aa6f7e2fbdcf" />
 
 #### Eficiencia por Formato
 El análisis comparativo revela diferencias drásticas en el rendimiento entre los formatos de la cadena: **Supermarket Type1** encabeza el volumen operativo con **5,577** transacciones y recauda las mayores ventas totales con **12,917,342.26**, mientras que **Supermarket Type3**, a pesar de tener solo **935** transacciones, domina con holgura la eficiencia y el ticket promedio por producto alcanzando **3,694.04**. En marcado contraste, el formato **Grocery Store** registra un volumen considerable de **1,083** transacciones pero se rezaga fuertemente al fondo con ventas totales de apenas **368,034.27** y una venta promedio muy baja de **339.83**.
