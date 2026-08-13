@@ -118,4 +118,66 @@ FROM [RetailDB].[dbo].[Staging_Train_Clean];
 La compañía acumuló ingresos históricos totales por **18,591,125.41** unidades monetarias, estableciendo una venta promedio de **2,181.29** por cada transacción o registro analizado en la cadena.
 La gerencia podría utilizar estos indicadores base como línea de referencia para medir con precisión el crecimiento financiero de futuras campañas comerciales y evaluar el ticket promedio de salida de los productos.
 
+### Pregunta #2: ¿Cómo se pueden clasificar las tiendas objetivamente en cuatro niveles de rendimiento financiero según sus ingresos?
+
+Agrupé los ingresos por cada sucursal utilizando una expresión de tabla común (`WITH`) y apliqué la función de distribución avanzada `NTILE(4)` junto con un condicional `CASE` para segmentar el rendimiento financiero en cuatro cuartiles exactos.
+```sql
+WITH VentasPorTienda AS (
+    SELECT 
+        [OutletID] AS id_tienda,
+        SUM([OutletSales]) AS ingreso_total
+    FROM [RetailDB].[dbo].[Staging_Train_Clean]
+    GROUP BY [OutletID]
+),
+ClasificacionCuartiles AS (
+    SELECT 
+        id_tienda,
+        ingreso_total,
+        NTILE(4) OVER (ORDER BY ingreso_total DESC) AS cuartil_rendimiento
+    FROM VentasPorTienda
+)
+SELECT 
+    id_tienda,
+    ingreso_total,
+    cuartil_rendimiento,
+    CASE 
+        WHEN cuartil_rendimiento = 1 THEN 'Alto Rendimiento (Q1 - Top 25%)'
+        WHEN cuartil_rendimiento = 2 THEN 'Medio-Alto (Q2 - 25% al 50%)'
+        WHEN cuartil_rendimiento = 3 THEN 'Medio-Bajo (Q3 - 50% al 75%)'
+        ELSE 'Bajo Rendimiento (Q4 - Bottom 25%)'
+    END AS categoria_tienda
+FROM ClasificacionCuartiles
+ORDER BY cuartil_rendimiento ASC;
+```
+<img width="562" height="258" alt="image" src="https://github.com/user-attachments/assets/0e091166-b00c-4ff5-bbc7-50fe1d1dbff6" />
+
+#### Segmentación de Sucursales
+El análisis mediante cuartiles dejó en evidencia una disparidad crítica en el rendimiento de las sucursales: la tienda **OUT027** lidera el mercado con una facturación excepcional de **3,453,926.05**, distanciándose fuertemente del resto del Top 25% (Q1). En el extremo opuesto, sucursales como la **OUT010** y **OUT019** se hunden en el Bottom 25% (Q4) con ingresos muy rezagados que apenas rondan los **188,340** y **179,694**.
+La gerencia debe usar esta clasificación para replicar las buenas prácticas comerciales de la tienda estrella OUT027 en las sucursales intermedias, y aplicar una intervención de emergencia o auditoría operativa en el grupo de bajo rendimiento (Q4) para evitar mayores pérdidas.
+
+### Pregunta #3: ¿Cuáles son exactamente los 10 mejores productos del negocio y cuáles son los 10 con peor desempeño comercial?
+
+Utilicé expresiones de tabla común y la función analítica de ranking `DENSE_RANK` para ordenar de forma descendente y ascendente el volumen de ventas por cada código de producto, combinando los resultados mediante un operador `UNION ALL`.
+```sql
+WITH Ranking AS (
+    SELECT 
+        [ProductID] AS id_producto,
+        SUM([OutletSales]) AS ingreso_total,
+        DENSE_RANK() OVER (ORDER BY SUM([OutletSales]) DESC) AS rnk_top,
+        DENSE_RANK() OVER (ORDER BY SUM([OutletSales]) ASC) AS rnk_bottom
+    FROM [RetailDB].[dbo].[Staging_Train_Clean]
+    GROUP BY [ProductID]
+)
+SELECT id_producto, ingreso_total, 'Top 10' AS clasificacion FROM Ranking WHERE rnk_top <= 10
+UNION ALL
+SELECT id_producto, ingreso_total, 'Bottom 10' AS clasificacion FROM Ranking WHERE rnk_bottom <= 10
+ORDER BY ingreso_total DESC;
+```
+
+<img width="330" height="452" alt="image" src="https://github.com/user-attachments/assets/3d6b2095-b1cc-4602-acad-4600fa92c9f4" />
+
+#### Productos Estrella vs. Baja Salida
+El análisis de extremos dejó al descubierto una brecha comercial masiva en el catálogo: el producto líder **FDY55** encabeza el Top 10 con una facturación de **42,661.80**, seguido muy de cerca por el **FDA15** con **41,584.54**. En stark contraste, los artículos catalogados como Bottom 10 presentan ingresos críticos y cercanos a cero, destacando el producto **FDQ60** que apenas recauda **120.51** y el **NCR42** con **332.90**.
+La empresa debe implementar urgentemente una política de abastecimiento prioritario y protección de stock para los códigos estrella del Top 10, mientras que los ítems del Bottom 10 requieren una evaluación inmediata para su liquidación o baja definitiva del inventario, evitando así el costo de almacenamiento de productos sin rotación.    
+
 
