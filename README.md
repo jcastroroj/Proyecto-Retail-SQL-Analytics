@@ -33,12 +33,11 @@ El objetivo principal de esta primera fase fue conocer la salud general de los d
 ### 1. Auditoría de Estructura
 Ejecuté una auditoría estructural para validar los tipos de datos asignados a cada columna de la tabla.
 
-
 ```sql
 EXEC sp_help 'Staging_Train_Raw';
 ```
+<img width="925" height="523" alt="image" src="https://github.com/user-attachments/assets/9f9a5ea5-12aa-4a96-8ccb-a250dc3bf428" />
 
-*(Aquí pega tu captura de pantalla de SSMS)*
 
 ### 2. Perfilamiento y Detección de Nulos
 Verifiqué la existencia de valores faltantes en los campos críticos del dataset utilizando condicionales de conteo para asegurar la integridad de la información.
