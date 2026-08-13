@@ -9,3 +9,53 @@ El equipo comercial y de operaciones de la compañía de retail desea optimizar 
 Los datos originales extraídos del repositorio público de [Big Mart Sales en Kaggle](https://www.kaggle.com/datasets/akashdeepkuila/big-mart-sales?select=Train-Set.csv), junto con una copia local disponible en la carpeta [`dataset/`](dataset/) de este repositorio, incluyen información detallada que captura características de los productos, niveles de grasa, visibilidad en anaquel, precios MRP, tipos de tiendas y ventas históricas, distribuidos en más de 8,500 registros.
 
 <img width="1091" height="252" alt="Imagen1" src="https://github.com/user-attachments/assets/bc027647-b9bb-4d60-8d1c-438b7cd8b263" />
+
+## Áreas de Análisis (Tasks)
+
+En este análisis, desarrollo consultas orientadas a responder las siguientes preguntas clave de negocio:
+
+* **Auditoría y Limpieza (Pilar 1):** ¿Cuál es el estado inicial de los registros y cómo se homologan las inconsistencias de texto y nulos en el contenido de grasa (`FatContent`)?
+* **Rendimiento Global (Pilar 2):** ¿Cuáles son los ingresos históricos globales y cómo se comportan las ventas según el tipo de ubicación y el año de establecimiento de las sucursales?
+* **Segmentación de Sucursales (Pilar 2):** ¿Cómo se pueden clasificar las tiendas en cuartiles de rendimiento financiero utilizando funciones de distribución (`NTILE`)?
+* **Productos Estrella y Descartables (Pilar 3):** ¿Cuáles son los 10 mejores productos (Top) y los 10 con peor salida (Bottom) utilizando funciones de ranking (`DENSE_RANK`)?
+* **Participación por Categoría (Pilar 3):** ¿Cuál es el porcentaje de aporte de cada tipo de producto frente al gran total de la empresa utilizando funciones de ventana vacías (`SUM() OVER()`)?
+* **Top por Categoría (Pilar 3):** ¿Cuáles son los 3 principales productos de cada categoría aplicando particionamiento por tipo de producto (`ROW_NUMBER`)?
+* **Eficiencia por Formato de Tienda (Pilar 4):** ¿Cómo se comparan los supermercados frente a las tiendas de conveniencia en cuanto a su venta promedio por producto?
+* **Impacto de la Visibilidad (Pilar 4):** ¿Existe una anomalía de ventas en los productos según su nivel de exposición o visibilidad en los anaqueles?
+* **Factor de Rotación y Precio (Pilar 5):** ¿Cómo se comportan las ventas y la velocidad de rotación esperada al segmentar los productos según su precio de etiqueta (`MRP`)?
+* **Ley de Pareto (Pilar 5):** ¿Qué porcentaje de las ventas totales concentra cada categoría de producto dentro del negocio?
+* **Estabilidad y Riesgo Comercial (Pilar 5):** ¿Cuál es el nivel de volatilidad y dispersión de las ventas (desviación estándar) dentro de cada categoría para detectar riesgos operativos?
+
+## Pilar 1: Entender el Terreno (Exploración, Auditoría y Limpieza)
+
+El objetivo principal de esta primera fase fue conocer la salud general de los datos, detectar valores nulos y homologar las variables categóricas irregulares antes de avanzar con el análisis de negocio.
+
+### 1. Auditoría de Estructura
+Ejecuté una auditoría estructural para validar los tipos de datos asignados a cada columna de la tabla.
+
+
+EXEC sp_help 'Staging_Train_Raw';
+
+*(Aquí pega tu captura de pantalla de SSMS)*
+
+### 2. Perfilamiento y Detección de Nulos
+Verifiqué la existencia de valores faltantes en los campos críticos del dataset utilizando condicionales de conteo para asegurar la integridad de la información.
+
+*(Aquí pega tu código del perfilamiento de nulos)*
+*(Aquí pega tu captura de pantalla de SSMS)*
+
+### 3. Detección de Inconsistencias de Texto
+Analicé los valores categóricos de la columna de contenido de grasa (`FatContent`), detectando variaciones de escritura que significaban lo mismo (como `'LF'` / `'Low Fat'` y `'reg'` / `'Regular'`).
+
+*(Aquí pega tu código de agrupación de FatContent)*
+*(Aquí pega tu captura de pantalla de SSMS)*
+
+### 4. Plan de Limpieza y Tabla Homologada
+Finalmente, para corregir las anomalías encontradas, diseñé un script que unifica los textos irregulares, reemplaza los valores nulos por defecto con funciones lógicas (`ISNULL`, `CASE`) y genera una tabla limpia oficial llamada `Staging_Train_Clean`.
+
+*(Aquí pega tu código de la creación de la tabla limpia)*
+*(Aquí pega tu captura de pantalla de SSMS)*
+
+
+
+
