@@ -307,7 +307,7 @@ ORDER BY nivel_visibilidad ASC;
 ```
 <img width="480" height="117" alt="image" src="https://github.com/user-attachments/assets/cbaf7490-ee7b-48ac-beae-ca3ae6b293d2" />
 
-####Impacto de la Visibilidad en el Anaquel
+#### Impacto de la Visibilidad en el Anaquel
 El análisis según el nivel de exposición muestra un comportamiento contraintuitivo pero revelador en el punto de venta: el segmento de **Baja Visibilidad (< 5%)** concentra la mayor cantidad de productos con **4,051** registros y lidera el rendimiento con una venta promedio superior de **2,289.54**, seguido de cerca por la **Media Visibilidad (5% - 15%)** con **3,822** productos y una venta promedio de **2,192.72**. En contraste, el segmento de **Alta Visibilidad (> 15%)** agrupa una oferta reducida de **650** productos y experimenta una caída marcada en su venta promedio, situándose en **1,439.41**.
 La gerencia debe reevaluar la asignación de espacios preferenciales en los anaqueles, ya que los datos sugieren que una alta exposición visual por sí sola no garantiza un mayor ticket de venta; se deben investigar factores adicionales como la demanda natural del producto o posibles sobreexhibiciones en artículos de menor rotación.
 
@@ -341,7 +341,7 @@ ORDER BY mrp_promedio ASC;
 ```
 <img width="642" height="140" alt="image" src="https://github.com/user-attachments/assets/50eee5f6-1094-4eb7-9b11-e049e546af28" />
 
-####Impacto del Nivel de Precios (MRP) y Factor de Retorno
+#### Impacto del Nivel de Precios (MRP) y Factor de Retorno
 El análisis por rangos de precios demuestra una progresión ascendente muy clara en la venta promedio a medida que se incrementa el valor del producto: el segmento **Económico (< 70)** registra **1,341** productos con un MRP promedio de **48.59** y una venta promedio de **736.47**, mientras que el segmento **Medio (70 - 140)** agrupa **2,778** artículos con **105.01** de MRP y **1,621.15** en ventas. Por su parte, el segmento **Alto (140 - 200)** cuenta con **2,964** productos, un MRP de **169.76** y **2,632.41** de venta promedio, y finalmente el segmento **Premium (> 200)** alcanza **1,440** artículos con un MRP promedio de **237.25** y la venta promedio más alta de **3,678.82**. Además, el factor de retorno de ventas se mantiene sumamente estable y competitivo entre **15.1570** y **15.5069** en todas las categorías.
 La gerencia puede utilizar estos datos para confirmar que los segmentos **Alto** y **Medio** concentran la mayor variedad de inventario, mientras que el factor de retorno constante valida que los incrementos en el precio de etiqueta se traducen de forma proporcional y saludable en los ingresos comerciales del negocio.
 
@@ -361,7 +361,7 @@ ORDER BY venta_promedio DESC
 ```
 <img width="778" height="372" alt="image" src="https://github.com/user-attachments/assets/c1ba2d44-9ffa-4cf5-aabd-f3ffe022db18" />
 
-####Rendimiento y Factor de Retorno por Categoría
+#### Rendimiento y Factor de Retorno por Categoría
 El análisis por categoría detalla el comportamiento financiero y la eficiencia de inventario de cada línea comercial: **Stachy Foods** encabeza la venta promedio con **2,374.33** (148 productos, MRP promedio de **147.84** y un factor de retorno de **16.0604**), seguida muy de cerca por **Seafood** con una venta promedio de **2,326.07** (64 productos, MRP de **141.84** y el factor de retorno más alto de **16.3990**). En contraste, categorías de alta masividad como **Fruits and Vegetables** agrupan la mayor variedad con **1,232** productos y una venta promedio de **2,289.01**, mientras que en la parte baja del ranking se ubica **Others** con **169** artículos y una venta promedio de **1,926.14** (factor de retorno de **14.4984**).
 La empresa puede utilizar estos indicadores para focalizar las estrategias de reposición de inventario y optimizar la asignación de recursos en aquellas categorías que demuestran una mayor rentabilidad y tracción en el punto de venta.
 
@@ -383,7 +383,7 @@ ORDER BY factor_individual ASC;
 <img width="608" height="627" alt="image" src="https://github.com/user-attachments/assets/cafdc89e-b700-4e5d-a029-1399818aa97c" />
 
 
-####Identificación de Productos de Baja Rotación (Zombies)
+#### Identificación de Productos de Baja Rotación (Zombies)
 El análisis a nivel de detalle de SKU permite detectar con precisión los productos específicos que arrastran el rendimiento comercial dentro de la categoría **Others**: el artículo **NCP55** registra el menor rendimiento con un factor individual de **0.98** (precio de etiqueta de **56.4614** y ventas históricas de **55.2614**), seguido de cerca por productos como **NCM26** (factor individual de **0.99**, MRP de **153.934** y ventas de **153.134**), **NCL31** (factor de **0.99**, MRP de **144.747** y ventas de **143.147**), **NCL07** (factor de **0.99**, MRP de **40.548** y ventas de **39.948**) y **NCP43** (factor de **0.99**, MRP de **181.766** y ventas de **179.766**).
 La gerencia puede utilizar esta auditoría a nivel de artículo individual para descontinuar o liquidar estos productos de baja tracción, liberando valioso espacio de anaquel y reduciendo costos innecesarios de almacenamiento operativo.
 
@@ -404,7 +404,7 @@ ORDER BY indice_volatilidad_porcentaje DESC;
 ```
 <img width="746" height="381" alt="image" src="https://github.com/user-attachments/assets/90fb1a07-4ae0-4f14-9d1a-445767b879e0" />
 
-####Estabilidad y Riesgo Comercial por Categoría
+#### Estabilidad y Riesgo Comercial por Categoría
 El análisis de dispersión y riesgo comercial permite a la gerencia evaluar la previsibilidad de los ingresos por cada línea de producto: la categoría **Breakfast** encabeza la volatilidad con el índice más alto de dispersión alcanzando un **90.52%** (110 productos, venta promedio de **2,111.81** y desviación estándar de **1,911.69**), seguida de cerca por **Dairy** con un índice de **84.41%** (682 productos, venta de **2,232.54** y desviación de **1,884.40**) y **Soft Drinks** con **83.44%** (445 productos, venta de **2,006.51** y desviación de **1,674.25**). En el extremo opuesto, las categorías más estables son **Others** con un índice de **74.34%** (169 productos, venta de **1,926.14** y desviación de **1,431.86**) y **Canned** registrando la menor volatilidad con **73.94%** (649 productos, venta de **2,225.19** y desviación de **1,645.24**).
 La empresa debe utilizar estas métricas de volatilidad para implementar políticas de control de inventario diferenciadas; las categorías con alta inestabilidad como **Breakfast** exigen modelos de reabastecimiento más estrictos para prevenir quiebres de stock o sobrecostos por almacenamiento de productos con demanda impredecible.
 
@@ -434,6 +434,6 @@ ORDER BY factor_retorno_visibilidad DESC;
 ```
 <img width="860" height="127" alt="image" src="https://github.com/user-attachments/assets/aea04ad6-3e60-45cd-85dc-e3d752910378" />
 
-####Impacto de la Ubicación en el Anaquel y Factor de Retorno
+#### Impacto de la Ubicación en el Anaquel y Factor de Retorno
 El análisis por zonas de exposición detalla la eficiencia comercial del espacio físico con los resultados exactos de la auditoría: el segmento de **1. Baja Visibilidad (Escondido)** lidera con contundencia el rendimiento con un factor de retorno de visibilidad de **16.4157** (concentrando **4,051** productos, un MRP promedio de **139.47** y una venta promedio generada de **2,289.54**), seguido por la **2. Visibilidad Media** con un factor de retorno de **15.5272** (**3,131** productos, MRP promedio de **144.42** y una venta promedio de **2,242.45**). En la parte inferior se encuentra el segmento de **3. Alta Visibilidad (Zona caliente / Ojos)** con un factor de retorno de **12.4396** (**1,341** productos, MRP de **137.58** y una venta promedio de **1,711.46**).
 La gerencia debe utilizar estos hallazgos para reevaluar la distribución del espacio en los puntos de venta, ya que los datos evidencian que las zonas de mayor exposición visual no necesariamente maximizan el retorno comercial por unidad monetaria de precio, sugiriendo una oportunidad clave para optimizar la asignación de anaqueles.
