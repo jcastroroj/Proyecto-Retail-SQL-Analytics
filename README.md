@@ -8,3 +8,4 @@ El equipo comercial y de operaciones de la compañía de retail desea optimizar 
 
 Los datos originales extraídos del repositorio público de [Big Mart Sales en Kaggle](https://www.kaggle.com/datasets/akashdeepkuila/big-mart-sales?select=Train-Set.csv), junto con una copia local disponible en la carpeta [`dataset/`](dataset/) de este repositorio, incluyen información detallada que captura características de los productos, niveles de grasa, visibilidad en anaquel, precios MRP, tipos de tiendas y ventas históricas, distribuidos en más de 8,500 registros.
 
+<img width="1091" height="252" alt="Imagen1" src="https://github.com/user-attachments/assets/bc027647-b9bb-4d60-8d1c-438b7cd8b263" />
